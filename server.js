@@ -1,14 +1,14 @@
 // Importar pacotes/bibliotecas
 import express from "express";
 import dotenv from "dotenv";
-
+import comidaRoutes from './src/routes/comidaRoutes.js';
 // Criar aplicação com Express e configurar para aceitar JSON
 const app = express();
 app.use(express.json());
 
 // Carregar variáveis de ambiente e definir constante para porta do servidor
 dotenv.config();
-const serverPort = process.env.PORT || 3001;
+const serverPort = process.env.PORT || 3000;
 
 // Rota principal GET para "/"
 app.get("/", (req, res) => {
@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
 
 // Aqui vão todas suas Rotas
 
+app.use('/comidas', comidaRoutes);
 
 // Iniciar servidor escutando na porta definida
 app.listen(serverPort, () => {
